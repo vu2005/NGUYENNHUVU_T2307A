@@ -1,0 +1,31 @@
+﻿@model IEnumerable<payroll.Models.DepartmentModel>
+@{
+    ViewData["Title"] = "Department List";
+}
+
+<h2>Department List</h2>
+
+<a class="btn btn-primary" href="@Url.Action("Create")">Add New Department</a>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var department in Model)
+        {
+            <tr>
+                <td>@department.Id</td>
+                <td>@department.Name</td>
+                <td>
+                    <a class="btn btn-warning" href="@Url.Action("Edit", new { id = department.Id })">Edit</a>
+                    <a class="btn btn-danger" href="@Url.Action("Delete", new { id = department.Id })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,23 @@
+﻿-- Create database named payroll
+CREATE DATABASE payroll;
+
+-- Use the payroll database
+USE payroll;
+
+-- Table for department
+CREATE TABLE department (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(32) NOT NULL,
+    CONSTRAINT chk_name_length CHECK (LENGTH(name) > 2 AND LENGTH(name) < 32)
+);
+
+-- Table for employee
+CREATE TABLE employee (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(33) NOT NULL,
+    salary INT NOT NULL CHECK (salary < 10000),
+    status BOOLEAN NOT NULL,
+    joiningdate DATE NOT NULL,
+    departmentid INT,
+    FOREIGN KEY (departmentid) REFERENCES department(id)
+);

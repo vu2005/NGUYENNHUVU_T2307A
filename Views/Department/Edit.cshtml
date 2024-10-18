@@ -1,0 +1,17 @@
+﻿@model payroll.Models.DepartmentModel
+@{
+    ViewData["Title"] = Model.Id == 0 ? "Create Department" : "Edit Department";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+</form>
